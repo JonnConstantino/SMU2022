@@ -17,6 +17,26 @@ https://boidacarapreta.github.io/adcipt20221/
 
 - Mensagens
 
+<a id="entrar-na-sala"></a>
+**entrar-na-sala**
+```json
+42[
+    "entrar-na-sala",
+    "0"
+]
+```
+
+Após a mensagem entrar na sala é possível identificar o jogador pela mensagem abaixo com o seu ID.
+
+```json
+42[
+    "jogadores",
+    {
+        "primeiro": "OvWO4CTtQPZvjmdXAAAx"
+    }
+]
+```
+
 <a id="offer"></a>
 **offer**
 ```json
@@ -172,6 +192,19 @@ https://boidacarapreta.github.io/adcipt20221/
 São identificados os jogadores por códigos IDs gerados ao entrar no jogo.
 Segue uma mensagem de que há dois jogadores na partida.
 
+Como mostrado inicialmente, após a mensagem [entrar-na-sala](#entrar-na-sala) é recebido a mensagem do jogador mostrando o identificador do mesmo.
+
+```json
+42[
+    "jogadores",
+    {
+        "primeiro": "OvWO4CTtQPZvjmdXAAAx"
+    }
+]
+```
+
+Após entrar o outro jogador recebemos a seguinte mensagem.
+
 **jogadores**
 ```json
 [
@@ -187,7 +220,7 @@ Como podemos ver, o ID do primeiro jogador é OvWO4CTtQPZvjmdXAAAx e o do segund
 
 - Diálogos
 
-Estão constantemente trocando mensagens mostrando a localização dos jogadores, como podemos ver a seguir:
+Estão constantemente trocando mensagens mostrando a localização dos usuários jogadores, como podemos ver a seguir:
 
 ```json
 42[
@@ -203,11 +236,47 @@ Estão constantemente trocando mensagens mostrando a localização dos jogadores
 
 ```json
 42[
+    "estadoDoJogador",
+    "0",
+    {
+        "frame": 11,
+        "x": 400,
+        "y": 297.3333333333333
+    }
+]
+```
+
+```json
+42[
+    "estadoDoJogador",
+    "0",
+    {
+        "frame": 12,
+        "x": 400,
+        "y": 297.3333333333333
+    }
+]
+```
+
+```json
+42[
     "desenharOutroJogador",
     {
         "frame": "",
         "x": 300,
         "y": 400
+    }
+]
+```
+
+```json
+42[
+    "estadoDoJogador",
+    "0",
+    {
+        "frame": 12,
+        "x": 400,
+        "y": 297.3333333333333
     }
 ]
 ```
