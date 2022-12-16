@@ -189,6 +189,10 @@ Após a mensagem entrar na sala é possível identificar o jogador pela mensagem
 
 - Transações
 
+As transações são mensagens de requisição e resposta utilizadas na aplicação. No nosso caso dessa aplicação Web do jogo foram utilizadas apenas o par [offer](#offer) (requisição) e [answer](#answer) (resposta) com os dados importantes do SDP.
+
+Também temos várias mensagens do tipo candidate, porém sem resposta.
+
 São identificados os jogadores por códigos IDs gerados ao entrar no jogo.
 Segue uma mensagem de que há dois jogadores na partida.
 
@@ -219,6 +223,8 @@ Após entrar o outro jogador recebemos a seguinte mensagem.
 Como podemos ver, o ID do primeiro jogador é OvWO4CTtQPZvjmdXAAAx e o do segundo é VkckMc1phvy9BPS5AAAz.
 
 - Diálogos
+
+Os diálogos são o conjunto de transações que ocorrem durante a aplicação, com início da conexão, comunicação e encerramento. No caso da aplicação Web analisada, temos apenas o par de requisição offer e answer como mencionado, então temos apenas a transação de estabelecimento da conexão.
 
 Estão constantemente trocando mensagens mostrando a localização dos usuários jogadores, como podemos ver a seguir:
 
@@ -323,9 +329,25 @@ Foram aceitos por ambas as partes:
 
 ## Escolha de caminho e Transporte de mídia
 
+A escolha do caminho utilizada foi o Stun sobre ICE. Podemos verificar essa informação dentro do arquivo cena1.js no [arquivo de rede](boidacarapreta.github.io.har) se abrirmos ele no navegador. Segue a informação do arquivo.
+
+```json
+var ice_servers = {
+  iceServers: [
+    {
+      urls: "stun:stun.l.google.com:19302",
+    }
+  ],
+};
+```
+
 O RTP (Real-Time Transport Protocol) torna possível o transporte de pacotes contendo voz, vídeo ou outro tipo de mídia (informação) sobre uma rede IP
 
 Protocolo usado tanto para escolha do caminhado quanto para transporte de mídia foi através do protocolo UDP com o IP 192.168.3.9 que seria o IP local do meu notebook pessoal na minha rede residencial. Houve comunicação na porta 36507 e porta 52477.
+
+São utilizados como transporte de mídia o SRTP e o SRTCP. Basicamente o SRTP (Secure Real-Time Transport Protocol) é uma extensão do protocolo de transporte em tempo real (RTP) que conta com medidas de segurança otimizadas. O protocolo oferece criptografia confidencialidade, autenticação de mensagem e proteção de resposta para seu tráfego de áudio e vídeo transmitido.
+
+O RTCP funciona juntamente com o RTP. O RTP realiza a entrega dos dados, enquanto o RTCP envia pacotes de controle aos participantes de uma chamada. Sua função principal é fornecer um feedback da qualidade dos serviços oferecidos pelo RTP. A versão SRTCP (Secure Real-Time Transport Control Protocol) é uma extensão do RTCP com medidas de segurança otimizados, assim como o SRTP.
 
 > IP 192.168.3.9
 
