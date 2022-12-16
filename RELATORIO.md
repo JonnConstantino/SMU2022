@@ -349,6 +349,8 @@ São utilizados como transporte de mídia o SRTP e o SRTCP. Basicamente o SRTP (
 
 O RTCP funciona juntamente com o RTP. O RTP realiza a entrega dos dados, enquanto o RTCP envia pacotes de controle aos participantes de uma chamada. Sua função principal é fornecer um feedback da qualidade dos serviços oferecidos pelo RTP. A versão SRTCP (Secure Real-Time Transport Control Protocol) é uma extensão do RTCP com medidas de segurança otimizados, assim como o SRTP.
 
+Podemos observar essas informações nas mensagens do tipo [offer](#offer) e [answer](#answer).
+
 > IP 192.168.3.9
 
 > PORTA 36507
